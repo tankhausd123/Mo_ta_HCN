@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HCN</title>
+</head>
+<body>
+<p id="Result1"></p>
+<p id="Result2"></p>
+<canvas id="myCanvas" width="1000px" height="500px" ></canvas>
+</body>
+<script>
+
+    let result1 = document.getElementById("Result1");
+    let result2 = document.getElementById("Result2");
+    let ctx = document.getElementById("myCanvas").getContext("2d");
+
+    function Rectangle(x, y, width, length) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.length = length;
+
+        this.getAcreage = function () {
+            return this.width * this.length;
+        };
+        this.getPerimeter = function () {
+            return (this.width + this.length) * 2;
+        };
+        this.draw = function () {
+            ctx.fillRect(x, y, width, length);
+        }
+    }
+
+    function createRectangle() {
+        let width = 200;
+        let length = 500;
+        let x = 50;
+        let y = 10;
+        let rectangle = new Rectangle(x,y,length, width);
+        // ctx.fillRect(x, y, rectangle.chieuDai, rectangle.chieuRong);
+        rectangle.draw();
+        result1.innerHTML = "Acreage: " + rectangle.getAcreage() + " int";
+        result2.innerHTML = "Perimeter: " + rectangle.getPerimeter() + " int";
+
+    }
+
+    createRectangle();
+
+</script>
+</html>
